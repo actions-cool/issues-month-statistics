@@ -41,8 +41,7 @@ jobs:
 
 | Param | Desc  | Type | Required |
 | -- | -- | -- | -- |
-| actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | Action Token | string | ✖ |
 | labels | The labels for the new issue | string | ✖ |
 | assignees | The assignees for the new issue | string | ✖ |
 | count-lables | Whether the new issue count labels | string | ✖ |

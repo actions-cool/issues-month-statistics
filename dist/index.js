@@ -9751,6 +9751,8 @@ const { dealStringToArr } = __nccwpck_require__(377);
 const token = core.getInput('token');
 const octokit = new Octokit({ auth: `token ${token}` });
 
+const perPage = 100;
+
 async function doMonthStatistics(owner, repo, labels, assignees) {
   const countLables = core.getInput('count-lables');
   const countComments = core.getInput('count-comments');

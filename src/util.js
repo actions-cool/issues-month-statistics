@@ -8,6 +8,8 @@ const { dealStringToArr } = require('actions-util');
 const token = core.getInput('token');
 const octokit = new Octokit({ auth: `token ${token}` });
 
+const perPage = 100;
+
 async function doMonthStatistics(owner, repo, labels, assignees) {
   const countLables = core.getInput('count-lables');
   const countComments = core.getInput('count-comments');
