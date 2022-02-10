@@ -4,50 +4,74 @@
   </a>
 </p>
 
-<h1 align="center">Action TypeScript Template</h1>
+<h1 align="center">📅 Issues Month Statistics</h1>
+
 <div align="center">
-A typescript template for rapid development of GitHub actions.
+Create a issue to show month statistics by GitHub Actions
 </div>
 
-![](https://img.shields.io/github/workflow/status/actions-cool/action-ts-template/CI?style=flat-square)
-[![](https://img.shields.io/badge/marketplace-action--ts--template-blueviolet?style=flat-square)](https://github.com/marketplace/actions/action-ts-template)
-[![](https://img.shields.io/github/v/release/actions-cool/action-ts-template?style=flat-square&color=orange)](https://github.com/actions-cool/action-ts-template/releases)
+![](https://img.shields.io/github/workflow/status/actions-cool/issues-month-statistics/CI?style=flat-square)
+[![](https://img.shields.io/badge/marketplace-issues--month--statistics-blueviolet?style=flat-square)](https://github.com/marketplace/actions/issues-month-statistics)
+[![](https://img.shields.io/github/v/release/actions-cool/issues-month-statistics?style=flat-square&color=orange)](https://github.com/actions-cool/issues-month-statistics/releases)
 
 ## 🚀 How to use?
 
-![](https://github.com/actions-cool/resources/blob/main/image/template.png?raw=true)
-
-## 📒 Catalog Introduction
+At 1 o'clock on the 1st of each month, an issue is generated for the statistics of the previous month.
 
 ```
-├── .github/workflows/     The CI for make sure it is packaged correctly
-├── dist                   Package the generated Aciton execution code
-├── src                    Component home directory
-│   └── main.ts            Your code
-├── .eslintrc.js           Eslint config
-├── .prettierrc.js         Prettier config
-├── action.yml             Action config
-└── tsconfig.json          TypeScript config
+name: Issue Month Statistics
+
+on:
+  schedule:
+    - cron: "0 1 1 * *"
+
+jobs:
+  month-statistics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: month-statistics
+        uses: actions-cool/issues-month-statistics@v1
+        with:
+          count-lables: true
+          count-comments: true
+          emoji: '+1, -1'
+          labels: '1, 2'
+          assignees: '1'
 ```
 
-The rest of the documents can be consulted by yourself.
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| labels | The labels for the new issue | string | ✖ |
+| assignees | The assignees for the new issue | string | ✖ |
+| count-lables | Whether the new issue count labels | string | ✖ |
+| count-comments | Whether the new issue count comments | string | ✖ |
+| emoji | Add emoji for the new issue | string | ✖ |
 
-## 🤖 Command introduction
+- The new issue title defaults to `[Current repo] Month Statistics: Year-Month`
+- `count-lables`: You can set `'true'` to add labels statistics
+- `count-comments`: You can set `'true'` to add comments statistics
 
-| Name | Desc |
+### emoji types
+
+| content | emoji |
 | -- | -- |
-| build | ts build |
-| format | prettier write |
-| lint | eslint check |
-| package | action build for release |
-| all | npm all |
+| `+1` | 👍 |
+| `-1` | 👎 |
+| `laugh` | 😄 |
+| `confused` | 😕 |
+| `heart` | ❤️ |
+| `hooray` | 🎉 |
+| `rocket` | 🚀 |
+| `eyes` | 👀 |
 
 ## ⚡ Feedback
 
 You are very welcome to try it out and put forward your comments. You can use the following methods:
 
-- Report bugs or consult with [Issue](https://github.com/actions-cool/action-ts-template/issues)
-- Submit [Pull Request](https://github.com/actions-cool/action-ts-template/pulls) to improve the code of `action-ts-template`
+- Report bugs or consult with [Issue](https://github.com/actions-cool/issues-month-statistics/issues)
+- Submit [Pull Request](https://github.com/actions-cool/issues-month-statistics/pulls) to improve the code
 
 也欢迎加入 钉钉交流群
 
@@ -60,4 +84,3 @@ You are very welcome to try it out and put forward your comments. You can use th
 ## LICENSE
 
 [MIT](./LICENSE)
-

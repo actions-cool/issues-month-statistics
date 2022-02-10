@@ -1,6 +1,6 @@
 # https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
-name: 'Action TS Template'
-description: 'A typescript template for rapid development of GitHub actions.'
+name: 'Issues Month Statistics'
+description: 'Create a issue to show month statistics by GitHub Actions'
 author: 'xrkffgg'
 
 branding:
@@ -13,6 +13,16 @@ inputs:
     description: Secret GitHub API token to use for making API requests.
     default: ${{ github.token }}
     required: true
+  count-lables:
+    description: 'For month-statistics'
+  count-comments:
+    description: 'For month-statistics'
+  emoji:
+    description: 'issue emoji'
+  labels:
+    description: 'labels'
+  assignees:
+    description: 'assignees'
 
 #outputs:
 #  result:
